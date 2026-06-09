@@ -35,9 +35,7 @@
 html,body{margin:0;padding:0;}
 body{
   font-family:'Tajawal',system-ui,sans-serif;
-  background:
-    radial-gradient(130% 60% at 50% -5%, #11185a 0%, #060a22 42%, var(--bg) 80%),
-    var(--bg);
+  background:#000;            /* الجوانب يمين/يسار سوداء */
   color:var(--text);
   min-height:100dvh;
   line-height:1.6;
@@ -46,8 +44,13 @@ body{
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
 
-/* ===== العمود الرئيسي ===== */
-.wrap{max-width:600px;margin:0 auto;padding:26px 18px 0;}
+/* ===== العمود الرئيسي (يحمل توهّج الخلفية، والجوانب تبقى سوداء) ===== */
+.wrap{
+  max-width:600px;margin:0 auto;padding:26px 18px 0;min-height:100dvh;
+  background:
+    radial-gradient(130% 55% at 50% -2%, #11185a 0%, #060a22 40%, var(--bg) 78%),
+    var(--bg);
+}
 
 /* ===== شريط أيقونات التواصل ===== */
 .socials{display:flex;justify-content:center;gap:12px;margin-bottom:30px;}
@@ -106,17 +109,9 @@ img{max-width:100%;display:block;}
 /* ===== معرض الأعمال ===== */
 .section-title{font-weight:800;font-size:19px;margin:6px 0 16px;text-align:center;}
 .section-title::after{content:"";display:block;width:46px;height:3px;border-radius:3px;background:var(--gold);margin:8px auto 0;}
-/* معرض الأعمال: كولاج بطاقتين متداخلتين مثل الصورة الأصلية */
-.showcase{position:relative;min-height:390px;margin-bottom:40px;}
-.show-card{
-  border-radius:24px;overflow:hidden;
-  background:linear-gradient(160deg,#0e1542,#070b22);border:1px solid #283173;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--muted-2);font-size:13px;text-align:center;padding:10px;
-}
-.show-card img{width:100%;height:100%;object-fit:cover;}
-.show-main{position:absolute;top:0;right:0;width:72%;height:360px;}
-.show-sub{position:absolute;left:0;bottom:0;width:52%;height:235px;border:4px solid var(--bg);box-shadow:0 20px 45px rgba(0,0,0,.65);}
+/* معرض الأعمال */
+.showcase{margin-bottom:40px;}
+.showcase img{width:100%;border-radius:20px;display:block;}
 
 /* ===== التقييمات ===== */
 .reviews{display:flex;flex-direction:column;gap:16px;margin-bottom:30px;}
@@ -142,10 +137,10 @@ img{max-width:100%;display:block;}
 /* ===== الفوتر ===== */
 .foot{text-align:center;padding:18px 6px 40px;}
 .foot-about{color:var(--muted-2);font-size:13px;max-width:520px;margin:0 auto 34px;}
-.thanks-box{width:230px;height:120px;margin:0 auto 40px;position:relative;}
-.tb-top,.tb-front{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;letter-spacing:1px;}
-.tb-top{top:8px;height:54px;background:var(--gold);color:#1a1300;font-size:24px;font-style:italic;transform:skewX(-24deg);box-shadow:0 6px 0 var(--gold-2);}
-.tb-front{top:58px;height:56px;background:var(--blue);color:#fff;font-size:26px;transform:skewX(-24deg);box-shadow:0 8px 18px rgba(28,42,158,.5);}
+.thanks{margin:0 auto 30px;text-align:center;}
+.thanks img{width:130px;height:auto;margin:0 auto 12px;image-rendering:pixelated;filter:drop-shadow(0 8px 24px rgba(45,73,255,.45));animation:floaty 3.2s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+.thanks .tw{font-family:'Poppins';font-weight:700;font-size:18px;letter-spacing:1px;color:#fff;}
 .copyright{color:#cfd2ee;font-size:13px;}
 
 @media (max-width:380px){.brand-name{font-size:19px;}.btn{font-size:15px;}}
@@ -240,8 +235,7 @@ img{max-width:100%;display:block;}
   <!-- ============ معرض الأعمال (ضع صور المنتجات) ============ -->
   <h3 class="section-title">أعمالنا</h3>
   <div class="showcase">
-    <div class="show-card show-main">أضف صورة العمل الرئيسية</div>
-    <div class="show-card show-sub">صورة عمل</div>
+    <img src="work.gif" alt="من أعمال لازورد ديزاين" loading="lazy" />
   </div>
 
   <!-- ============ التقييمات ============ -->
@@ -325,9 +319,9 @@ img{max-width:100%;display:block;}
       بأسلوب مبتكر واحترافي.
     </p>
 
-    <div class="thanks-box">
-      <div class="tb-top">For</div>
-      <div class="tb-front">Thanks</div>
+    <div class="thanks">
+      <img src="diamond.gif" alt="" />
+      <div class="tw">thanks for watching</div>
     </div>
 
     <div class="copyright">Copyright © 2025 Lazord Design.</div>
